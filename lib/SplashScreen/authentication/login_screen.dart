@@ -96,7 +96,7 @@ class LoginScreen extends StatefulWidget {
                  TextButton(onPressed: (){
                    Navigator.push(context,
                      MaterialPageRoute(
-                         builder: (context)=> const SignUpScreen())
+                         builder: (context)=> const SignupScreen())
                    );
                  },
                      child: const Text('Sign p'))
