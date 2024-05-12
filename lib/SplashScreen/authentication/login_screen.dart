@@ -1,6 +1,11 @@
+
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_bzu/Dashboard/dashboard_screen.dart';
 import 'package:my_bzu/SplashScreen/authentication/signup_screen.dart';
+import 'package:my_bzu/Utils/utils.dart';
 import 'package:my_bzu/widgets/round_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,10 +17,12 @@ class LoginScreen extends StatefulWidget {
 }
 
  class _LoginScreenState extends State<LoginScreen> {
-
+  bool loading=false;
   final _formKey=GlobalKey<FormState>();
    final emailController=TextEditingController();
    final passwordController= TextEditingController();
+
+   final _auth= FirebaseAuth.instance;
 
    @override
   void dispose() {
@@ -23,6 +30,34 @@ class LoginScreen extends StatefulWidget {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void login (){
+     setState(() {
+       loading=true;
+     });
+
+     _auth.signInWithEmailAndPassword(
+         email:emailController.text.toString(),
+          password: passwordController.text.toString()).then((value){
+
+            Utils().toastMessage(value.user!.email.toString());
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context)=>const DashboardScreen())
+            );
+            setState(() {
+              loading=false;
+            });
+
+     }).onError((error, stackTrace){
+
+       debugPrint(error.toString());
+       Utils().toastMessage(error.toString());
+       setState(() {
+         loading=false;
+       });
+
+     });
   }
 
    @override
@@ -83,8 +118,10 @@ class LoginScreen extends StatefulWidget {
              const SizedBox(height: 50,),
              RoundButton(
                  title: 'Login',
+                 loading: loading,
                  onTap: (){
              if(_formKey.currentState!. validate()){
+               login();
 
              }
              }),
