@@ -1,9 +1,8 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_bzu/Dashboard/dashboard_screen.dart';
+import 'package:my_bzu/SplashScreen/authentication/login_with_phone_number.dart';
 import 'package:my_bzu/SplashScreen/authentication/signup_screen.dart';
 import 'package:my_bzu/Utils/utils.dart';
 import 'package:my_bzu/widgets/round_button.dart';
@@ -136,9 +135,28 @@ class LoginScreen extends StatefulWidget {
                          builder: (context)=> const SignupScreen())
                    );
                  },
-                     child: const Text('Sign p'))
+                     child: const Text('Sign up'))
 
                ],
+             ),
+             const SizedBox(height: 30,),
+             InkWell(
+               onTap: (){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) =>const LoginWithPhoneNumber()));
+
+               },
+               child: Container(
+                 height: 50,
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.circular(50),
+                   border: Border.all(
+                     color: Colors.black,
+                   )
+                 ),
+                 child:const Center(
+                   child: Text('Login with phone number'),
+                 ),
+               ),
              )
            ],
          ),
