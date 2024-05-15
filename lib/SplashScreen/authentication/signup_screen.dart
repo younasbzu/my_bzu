@@ -74,6 +74,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       decoration:const InputDecoration(
+                        enabledBorder: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(),
                         hintText: 'Email',
                         prefixIcon: Icon(Icons.email_outlined),
                       ),

@@ -83,6 +83,8 @@ class LoginScreen extends StatefulWidget {
                        keyboardType: TextInputType.emailAddress,
                        controller: emailController,
                        decoration:const InputDecoration(
+                         border: OutlineInputBorder(),
+
                          hintText: 'Email',
                          prefixIcon: Icon(Icons.email_outlined),
                        ),
