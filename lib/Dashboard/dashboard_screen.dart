@@ -41,8 +41,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   MaterialPageRoute(builder: (context)=> const CourseScreen()));
             },
              child: Container(
-                height: 50,
-                width: 50,
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1.0,
+                  )
+                ),
                 child:const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

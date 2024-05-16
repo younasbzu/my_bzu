@@ -62,7 +62,8 @@ class _SignupScreenState extends State<SignupScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title:const Text('Sign up'),
+          title:const Center(
+              child: Text('Sign up')),
         ),
         body: SafeArea(
           child: Column(
