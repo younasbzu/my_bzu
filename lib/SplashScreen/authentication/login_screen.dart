@@ -69,98 +69,138 @@ class LoginScreen extends StatefulWidget {
        child: Scaffold(
          appBar: AppBar(
            automaticallyImplyLeading: false,
-           title:const Text('Login'),
+           title:const Center(
+               child:  Text('Login')),
          ),
-         body: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
-           crossAxisAlignment: CrossAxisAlignment.center,
-           children: [
-             Form(
-               key: _formKey,
-                 child: Column(
-                   children: [
-                     TextFormField(
-                       keyboardType: TextInputType.emailAddress,
-                       controller: emailController,
-                       decoration:const InputDecoration(
-                         border: OutlineInputBorder(),
+         body: SafeArea(
+           child: Column(
+             mainAxisAlignment: MainAxisAlignment.center,
+             crossAxisAlignment: CrossAxisAlignment.center,
+             children: [
+               Form(
+                 key: _formKey,
+                   child: Column(
+                     children: [
+                       Padding(
+                         padding: const EdgeInsets.all(10.0),
+                         child: TextFormField(
 
-                         hintText: 'Email',
-                         prefixIcon: Icon(Icons.email_outlined),
+                           keyboardType: TextInputType.emailAddress,
+                           controller: emailController,
+                           decoration:const InputDecoration(
+                            // fillColor: Colors.deepPurple,
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.only(
+                                 topLeft: Radius.circular(10.0),
+                                 topRight: Radius.circular(10.0),
+                                 bottomLeft: Radius.circular(10.0),
+                                 bottomRight: Radius.circular(10.0),
+                               )
+
+                             ),
+
+                             hintText: 'Email',
+                             prefixIcon: Icon(Icons.email_outlined),
+                           ),
+                           validator: (value){
+                             if(value!.isEmpty){
+                               return 'Enter email';
+                             }
+                             return null;
+                           },
+                         ),
                        ),
-                       validator: (value){
-                         if(value!.isEmpty){
-                           return 'Enter email';
-                         }
-                         return null;
-                       },
-                     ),
-                    const SizedBox(height: 10,),
-                     TextFormField(
-                       keyboardType: TextInputType.text,
-                       obscureText: true,
-                       controller: passwordController,
-                       decoration:const InputDecoration(
-                         hintText: 'Password',
-                         prefixIcon: Icon(Icons.key),
+                      const SizedBox(height: 15,),
+                       Padding(
+                         padding: const EdgeInsets.all(10.0),
+                         child: TextFormField(
+                           keyboardType: TextInputType.text,
+                           obscureText: true,
+                           controller: passwordController,
+                           decoration:const InputDecoration(
+                            // fillColor: Colors.grey,
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.only(
+                                 topLeft: Radius.circular(10.0),
+                                 topRight: Radius.circular(10.0),
+                                 bottomLeft: Radius.circular(10.0),
+                                 bottomRight: Radius.circular(10.0)
+                               ),
+                             ),
+                             hintText: 'Password',
+                             prefixIcon: Icon(Icons.key),
 
+                           ),
+                           validator: (value){
+                             if(value!.isEmpty){
+                               return 'Enter password';
+                             }
+                             return null;
+                           },
+                         ),
                        ),
-                       validator: (value){
-                         if(value!.isEmpty){
-                           return 'Enter password';
-                         }
-                         return null;
-                       },
-                     ),
 
-                   ],
-                 )
-             ),
-             const SizedBox(height: 50,),
-             RoundButton(
-                 title: 'Login',
-                 loading: loading,
-                 onTap: (){
-             if(_formKey.currentState!. validate()){
-               login();
-
-             }
-             }),
-             const SizedBox(height: 30,),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.end,
-               children: [
-                 const Text("Don't have an account?"),
-                 TextButton(onPressed: (){
-                   Navigator.push(context,
-                     MaterialPageRoute(
-                         builder: (context)=> const SignupScreen())
-                   );
-                 },
-                     child: const Text('Sign up'))
-
-               ],
-             ),
-             const SizedBox(height: 30,),
-             InkWell(
-               onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context) =>const LoginWithPhoneNumber()));
-
-               },
-               child: Container(
-                 height: 50,
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(50),
-                   border: Border.all(
-                     color: Colors.black,
+                     ],
                    )
-                 ),
-                 child:const Center(
-                   child: Text('Login with phone number'),
-                 ),
                ),
-             )
-           ],
+               const SizedBox(height: 25,),
+               Padding(
+                 padding: const EdgeInsets.all(10.0),
+                 child: RoundButton(
+                     title: 'Login',
+                     loading: loading,
+                     onTap: (){
+                 if(_formKey.currentState!. validate()){
+                   login();
+
+                 }
+                 }),
+               ),
+               const SizedBox(height: 15,),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   const Text("Don't have an account?"),
+                   TextButton(onPressed: (){
+                     Navigator.push(context,
+                       MaterialPageRoute(
+                           builder: (context)=> const SignupScreen())
+                     );
+                   },
+                       child: const Text('Sign up'))
+
+                 ],
+               ),
+               const SizedBox(height: 30,),
+               InkWell(
+                 onTap: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context) =>const LoginWithPhoneNumber()));
+
+                 },
+                 child: Padding(
+
+                   padding: const EdgeInsets.all(8.0),
+                   child: Container(
+                     height: 50,
+                     decoration: BoxDecoration(
+                       borderRadius:const BorderRadius.only(
+                         topLeft: Radius.circular(10.0),
+                         topRight: Radius.circular(10.0),
+                         bottomLeft: Radius.circular(10.0),
+                         bottomRight: Radius.circular(10.0),
+                       ),
+                       border: Border.all(
+                         color: Colors.black,
+                       )
+                     ),
+                     child:const Center(
+                       child: Text('Login with phone number'),
+                     ),
+                   ),
+                 ),
+               )
+             ],
+           ),
          ),
        ),
      );

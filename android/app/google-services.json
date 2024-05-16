@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135324377051",
+    "project_id": "my-bzu-39bf6",
+    "storage_bucket": "my-bzu-39bf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135324377051:android:148ba66a3d34857c9491fe",
+        "android_client_info": {
+          "package_name": "com.example.my_bzu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3CzhvkrW2xuFDtGG-px_VIBIpNNfaKTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
